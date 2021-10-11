@@ -13,15 +13,38 @@
 #include <stack>
 #include <vector>
 using namespace std;
+typedef ProcessItem DataType;
 
-
-struct Queue {
+class Queue {
+public:
+  
+  Queue(void);
+  ~Queue(void);
+  
+  void insert(const DataType& newItem);
+  bool remove(void);
+  bool move(void);
+  void moveToBack(void);
+  void moveToFront(void);
+  
+  bool get(DataType& item) const;
+  
+private:
+struct ProcessItem {
   int p_id, priority;
   float arrival_time;
   float total_CPU_Burst;
-} queue;
+}  
   
+struct Process {
+  ProcessItem contents;
+  Process* next;
+};
 
+Process * head, * tail, * cursor;
+int counter = 0;
+  
+};
 // Coder: J Yong
 // Purpose: reads in a line of input from file stream
 // Pre: file stream
